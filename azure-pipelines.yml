@@ -23,7 +23,13 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
-
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Visual Studio Professional(4)(94d2fcea-2682-41db-99c1-e80957c28953)'
+    appType: 'webApp'
+    WebAppName: 'tryforsuccess'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 - task: CmdLine@2
   inputs:
     script: |
